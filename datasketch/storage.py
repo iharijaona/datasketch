@@ -324,11 +324,11 @@ if cassandra is not None:
             WHERE TOKEN(key) >= ? LIMIT ?
         """
 
-        QUERY_GET_COUNTS = """
-            SELECT key, COUNT(value) AS count
-            FROM {}
-            WHERE key = ?
-        """
+        # QUERY_GET_COUNTS = """
+        #     SELECT key, COUNT(value) AS count
+        #     FROM {}
+        #     WHERE key = ?
+        # """
 
         QUERY_SELECT = """
             SELECT key, value, ts
@@ -412,7 +412,7 @@ if cassandra is not None:
             self._stmt_get_keys = self._session.prepare(self.QUERY_GET_KEYS.format(table_name))
             self._stmt_get = self._session.prepare(self.QUERY_SELECT.format(table_name))
             self._stmt_get_one = self._session.prepare(self.QUERY_SELECT_ONE.format(table_name))
-            self._stmt_get_count = self._session.prepare(self.QUERY_GET_COUNTS.format(table_name))
+            # self._stmt_get_count = self._session.prepare(self.QUERY_GET_COUNTS.format(table_name))
             self._stmt_delete_key = self._session.prepare(self.QUERY_DELETE_KEY.format(table_name))
             self._stmt_delete_val = self._session.prepare(self.QUERY_DELETE_VAL.format(table_name))
 
