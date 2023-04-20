@@ -305,7 +305,7 @@ if cassandra is not None:
 
         PAGE_SIZE = 1024
 
-        CONCURRENCY = 100
+        CONCURRENCY = 30
 
         QUERY_CREATE_TABLE = """
             CREATE TABLE IF NOT EXISTS {}  (
