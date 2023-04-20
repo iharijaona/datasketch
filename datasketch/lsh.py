@@ -276,6 +276,20 @@ class MinHashLSH(object):
                 hashtable.remove(H)
         self.keys.remove(key)
 
+    def bulk_remove(self, keys):
+        '''
+        Remove all data related to the given keys from the index.
+
+        Args:
+            keys (hashable): List of unique identifiers.
+
+        '''
+        encoded_keys = self.keys.getmany(*keys)
+        encoded_keys = list(zip(*encoded_keys))
+        for h_keys, hashtable in zip(encoded_keys, self.hashtables):
+                hashtable.remove(*h_keys)
+        self.keys.remove(*keys)
+
     def is_empty(self):
         '''
         Returns:
