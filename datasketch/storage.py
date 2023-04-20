@@ -667,14 +667,18 @@ if cassandra is not None:
             :rtype: dict[byte|str,int]
             :return: the number of values per key
             """
-            statements_and_parameters = [
-                (self._stmt_get_count, (self._key_encoder(key), ))
-                for key in keys
-            ]
+            # statements_and_parameters = [
+            #     (self._stmt_get_count, (self._key_encoder(key), ))
+            #     for key in keys
+            # ]
+            # return {
+            #     self._key_decoder(row.key): row.count
+            #     for rows in self._select(statements_and_parameters)
+            #     for row in rows
+            # }
             return {
-                self._key_decoder(row.key): row.count
-                for rows in self._select(statements_and_parameters)
-                for row in rows
+                key: 0
+                for key in keys
             }
 
         def one(self, key):
