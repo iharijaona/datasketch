@@ -319,7 +319,7 @@ if cassandra is not None:
         QUERY_DROP_TABLE = "DROP TABLE IF EXISTS {}"
 
         QUERY_GET_KEYS = """
-            SELECT DISTINCT key, TOKEN(key) as f_token
+            SELECT key, TOKEN(key) as f_token
             FROM {}
             WHERE TOKEN(key) >= ? LIMIT ?
         """
